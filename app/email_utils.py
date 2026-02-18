@@ -1,13 +1,12 @@
-import os
-from fastapi_mail import FastMail, MessageSchema, ConnectionConfig
+from fastapi_mail import ConnectionConfig, FastMail, MessageSchema
 
+from .core.config import get_settings
 
-MAILTRAP_USER = os.getenv("MAILTRAP_USER", "your_mailtrap_user")
-MAILTRAP_PASS = os.getenv("MAILTRAP_PASS", "your_mailtrap_pass")
+settings = get_settings()
 
 conf = ConnectionConfig(
-    MAIL_USERNAME=MAILTRAP_USER,
-    MAIL_PASSWORD=MAILTRAP_PASS,
+    MAIL_USERNAME=settings.mailtrap_user,
+    MAIL_PASSWORD=settings.mailtrap_pass,
     MAIL_FROM="noreply@example.com",
     MAIL_PORT=587,
     MAIL_SERVER="smtp.mailtrap.io",
