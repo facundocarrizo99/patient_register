@@ -20,8 +20,8 @@ services:
       - ./app:/app/app
     environment:
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/patients_db
-      - MAILTRAP_USER=c5885fecc9ff10
-      - MAILTRAP_PASS=9e3ea56c5d2410
+      - MAILTRAP_USER=${MAILTRAP_USER:-your_mailtrap_user}
+      - MAILTRAP_PASS=${MAILTRAP_PASS:-your_mailtrap_pass}
     ports:
       - "8000:8000"
     depends_on:
